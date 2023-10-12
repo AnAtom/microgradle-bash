@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+
+case "$1" in
+dependencies)
+  echo "Resolving dependencies..."
+  mkdir -p lib
+  java -jar ./ivy-2.5.2.jar -retrieve "lib/[artifact]-[type]-[revision].[ext]"
+  echo "Done"
+  ;;
+build)
+  echo "Building..."
+  mkdir -p build
+  find -name *.java > build/sources.txt
+  javac -d out/classes -cp lib/*:src @build/sources.txt
+  cd out/classes
+  jar cf ../HelloWorld.jar .
+  echo "Build complete"
+  ;;
+run)
+  echo "Running..."
+  java -cp out/*:lib/* $2
+  echo "Stop"
+  ;;
+clean)
+  echo "Cleaning..."
+  rm -fr lib build out
+  echo "Clear"
+  ;;
+*)
+  echo "Unknown command: $1"
+  echo "Usage: $0 dependencies|build|run|clean"
+  ;;
+esac

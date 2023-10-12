@@ -1,3 +1,0 @@
-C:\Prog\microgradle-tutorial\src\helloworld\HelloWorld.java
-C:\Prog\microgradle-tutorial\src\helloworld\print\ConsoleHelloWorldPrinter.java
-C:\Prog\microgradle-tutorial\src\helloworld\print\IHelloWorldPrinter.java
